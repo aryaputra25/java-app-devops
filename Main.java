@@ -14,7 +14,7 @@ public class Main {
 
         server.createContext("/", exchange -> {
 
-            String response = "anjass kelasss";
+            String response = "DevOps Ver 2";
 
             exchange.sendResponseHeaders(
                 200,
