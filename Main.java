@@ -14,7 +14,7 @@ public class Main {
 
         server.createContext("/", exchange -> {
 
-            String response = "DevOps Ver 2grep -n "8081\|HttpServer\|createContext" Main.java";
+            String response = "DevOps Ver 2grep -n ";
 
             exchange.sendResponseHeaders(
                 200,
