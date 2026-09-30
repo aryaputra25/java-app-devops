@@ -17,7 +17,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "=== DEPLOY ==="
-cp build/app.jar ../server/app.jar
+cp build/app.jar ..var/lib/jenkins/server/app.jar
 
 if [ $? -ne 0 ]; then
     echo "DEPLOY FAILED"
@@ -35,7 +35,7 @@ fi
 
 echo "=== START NEW APPLICATION ==="
 
-cd ../server
+cd ..var/lib/jenkins/server
 nohup java --add-modules jdk.httpserver -jar app.jar > app.log 2>&1 &
 
 sleep 2
