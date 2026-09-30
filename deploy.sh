@@ -42,7 +42,7 @@ sleep 2
 
 echo "=== VALIDATE ==="
 
-curl -f http://localhost:8080
+curl -f http://localhost:8081
 
 if [ $? -eq 0 ]; then
     echo
