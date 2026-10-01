@@ -26,7 +26,7 @@ pipeline {
 
         stage('Validate') {
             steps {
-                sh 'curl -f --max-time 10 https://localhost:8081'
+                sh 'curl -f --max-time 10 http://localhost:8081'
             }
         }
 
