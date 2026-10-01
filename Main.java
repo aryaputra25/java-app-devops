@@ -7,14 +7,14 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        HttpServer server = HttpServer.create(
+       HttpServer server = HttpServer.create(
             new InetSocketAddress(8081),
             0
         );
 
         server.createContext("/", exchange -> {
 
-            String response = "DevOps Ver 2grep -n ";
+            String response = "DevOps Ver 3";
 
             exchange.sendResponseHeaders(
                 200,
