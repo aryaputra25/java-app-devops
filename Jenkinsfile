@@ -6,25 +6,27 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo 'Starting Build'
+                sh 'rm -rf build'
+		sh 'mkdir -p build'
+		sh 'javac -d build Main.java'
             }
         }
 
         stage('Package') {
             steps {
-                echo 'Starting Package'
+                sh 'jar cfe build/app.jar Main -C build Main.class'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Starting Deploy'
+                sh './deploy.sh'
             }
         }
 
         stage('Validate') {
             steps {
-                echo 'Starting Validation'
+                sh 'curl -f https://localhost:8081'
             }
         }
 
