@@ -5,7 +5,10 @@ import java.net.InetSocketAddress;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
+
+       String environment = System.getenv("ENV");
+       System.out.println("Environment: " + environment); 
 
        HttpServer server = HttpServer.create(
             new InetSocketAddress(8081),
