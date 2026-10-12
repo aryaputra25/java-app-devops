@@ -1,0 +1,8 @@
+service:
+  java-app:
+    image: java-app:v5
+    container_name: java-app-compose 
+    ports :
+      - "8081:8081"
+    environment :
+      ENV: UAT
