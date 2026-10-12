@@ -1,8 +1,24 @@
-service:
+
+name: java-app
+
+services:
   java-app:
-    image: java-app:v5
-    container_name: java-app-compose 
-    ports :
+    image: java-app:jenkins-1
+    container_name: java-app-compose
+    ports:
       - "8081:8081"
-    environment :
+    environment:
       ENV: UAT
+    volumes:
+      - app-data:/app/data
+
+  web-test:
+    image: nginx:alpine
+    ports:
+      - "8082:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+
+volumes:
+  app-data:
+ 
