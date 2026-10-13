@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -31,8 +30,25 @@ pipeline {
 
         stage('Validate') {
             steps {
-                sh 'curl -f --max-time 10 http://localhost:8081'
-                sh 'curl -f --max-time 10 http://localhost:8082'
+                sh '''
+                    for i in $(seq 1 10); do
+                        if curl -fsS --max-time 3 http://localhost:8081; then
+                            echo "Java application is ready"
+                            break
+                        fi
+
+                        if [ "$i" -eq 10 ]; then
+                            echo "Java application validation failed"
+                            docker logs --tail 50 java-app-compose
+                            exit 1
+                        fi
+
+                        echo "Waiting for Java application... ($i/10)"
+                        sleep 2
+                    done
+                '''
+
+                sh 'curl -f --retry 5 --retry-connrefused --retry-delay 2 --max-time 10 http://localhost:8082'
             }
         }
     }
