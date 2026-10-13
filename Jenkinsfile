@@ -24,7 +24,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'docker compose -p java-app -f compose.yaml up -d --no-deps --force-recreate java-app'
+                sh 'docker compose -p java-app -f compose.yaml up -d --no-deps --force-recreate java-app web-test'
             }
         }
 
